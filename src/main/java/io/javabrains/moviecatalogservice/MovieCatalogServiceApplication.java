@@ -2,15 +2,19 @@ package io.javabrains.moviecatalogservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class MovieCatalogServiceApplication {
 
-	// Make RestTemplate a singleton to be injected into other classes
-
+	// Make RestTemplate a singleton using @Bean to be injected into other classes
+	// Enable service discovery using @LoadBalanced
 	@Bean
+	@LoadBalanced
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
