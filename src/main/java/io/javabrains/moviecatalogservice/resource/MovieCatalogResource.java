@@ -41,31 +41,4 @@ public class MovieCatalogResource {
                 .collect(Collectors.toList());
     }
 
-    /*
-    @HystrixCommand(fallbackMethod = "getFallbackCatalogItem")
-    private CatalogItem getCatalogItem(Rating rating) {
-        Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
-        return new CatalogItem(movie.getName(), "Desc", rating.getRating());
-    }
-
-    private CatalogItem getFallbackCatalogItem(Rating rating) {
-        return new CatalogItem("Movie name not found", "Desc", rating.getRating());
-    }
-
-    @HystrixCommand(fallbackMethod = "getFallbackUserRating")
-    private UserRating getUserRating(@PathVariable("userId") String userId) {
-        return restTemplate.getForObject("http://ratings-data-service/ratingsdata/users/" + userId, UserRating.class);
-    }
-
-    private UserRating getFallbackUserRating(@PathVariable("userId") String userId) {
-        UserRating userRating = new UserRating();
-        userRating.setUserRating(Arrays.asList(
-                new Rating("0", 0)
-        ));
-        return userRating;
-    }
-
-
-     */
-
 }
